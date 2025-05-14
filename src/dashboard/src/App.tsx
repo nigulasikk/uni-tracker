@@ -163,7 +163,7 @@ const App: React.FC = () => {
         </div>
       ) : stats ? (
         <>
-          {/* Stats Overview */}
+          {/* 统计概览 */}
           <div className="grid">
             <div className="stat-card">
               <div className="stat-title">Page Views</div>
@@ -187,7 +187,7 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          {/* Chart Section */}
+          {/* 图表部分 */}
           <div className="card">
             <div className="card-header">
               <div className="card-title">Metrics Over Time</div>
@@ -286,7 +286,7 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          {/* JS Errors Section */}
+          {/* JS错误部分 */}
           <div className="card">
             <div className="card-header">
               <div className="card-title">Recent JS Errors</div>
@@ -318,7 +318,7 @@ const App: React.FC = () => {
             </table>
           </div>
 
-          {/* API Requests Section */}
+          {/* API请求部分 */}
           <div className="card">
             <div className="card-header">
               <div className="card-title">Recent API Requests</div>
@@ -358,7 +358,7 @@ const App: React.FC = () => {
             </table>
           </div>
 
-          {/* Performance Metrics Section */}
+          {/* 性能指标部分 */}
           <div className="card">
             <div className="card-header">
               <div className="card-title">Performance Metrics</div>
@@ -381,7 +381,7 @@ const App: React.FC = () => {
         </>
       ) : null}
 
-      {/* Data Export/Import Section */}
+      {/* 数据导出/导入部分 */}
       <div className="card">
         <div className="card-header">
           <div className="card-title">Data Management</div>

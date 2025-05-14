@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Uni-Tracker CDN Example</title>
-  <!-- Include the Uni-Tracker script from CDN -->
+  <!-- 从CDN引入Uni-Tracker脚本 -->
   <script src="https://cdn.example.com/uni-tracker.min.js"></script>
   <script>
-    // Initialize Uni-Tracker
+    // 初始化Uni-Tracker
     UniTracker.init({
       id: 'my-app-id',
       environment: 'production',
@@ -15,7 +15,7 @@
       username: 'John Doe'
     });
 
-    // Track a custom event
+    // 跟踪自定义事件
     function trackButtonClick() {
       UniTracker.track('button_click', {
         buttonId: 'submit-button',
