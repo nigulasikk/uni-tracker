@@ -65,8 +65,8 @@ function App() {
 
   return (
     <div>
-      <h1>Uni-Tracker React Example</h1>
-      <button onClick={handleButtonClick}>Track Click</button>
+      <h1>Uni-Tracker React 示例</h1>
+      <button onClick={handleButtonClick}>跟踪点击</button>
     </div>
   );
 }
@@ -77,8 +77,8 @@ export default App;
 /*
 <template>
   <div>
-    <h1>Uni-Tracker Vue Example</h1>
-    <button @click="handleButtonClick">Track Click</button>
+    <h1>Uni-Tracker Vue 示例</h1>
+    <button @click="handleButtonClick">跟踪点击</button>
   </div>
 </template>
 

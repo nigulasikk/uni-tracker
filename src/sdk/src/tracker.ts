@@ -15,7 +15,7 @@ class UniTracker {
   private initialized = false;
 
   /**
-   * Initialize the tracker with configuration
+   * 初始化跟踪器并配置
    */
   public init(config: TrackerConfig): void {
     if (this.initialized) {
@@ -40,7 +40,7 @@ class UniTracker {
   }
 
   /**
-   * Track custom events
+   * 跟踪自定义事件
    */
   public track(eventName: string, params?: Record<string, any>): void {
     if (!this.initialized) {
@@ -65,14 +65,14 @@ class UniTracker {
   }
 
   /**
-   * Track page views
+   * 跟踪页面浏览
    */
   public trackPageView(): void {
     this.track('page_view');
   }
 
   /**
-   * Set user information
+   * 设置用户信息
    */
   public setUser(userInfo: { userId: string; username?: string }): void {
     this.config.userId = userInfo.userId;
@@ -80,14 +80,14 @@ class UniTracker {
   }
 
   /**
-   * Start a new session
+   * 开始新会话
    */
   public startSession(): void {
     this.track('session_start');
   }
 
   /**
-   * End the current session
+   * 结束当前会话
    */
   public endSession(): void {
     this.track('session_end');
@@ -95,7 +95,7 @@ class UniTracker {
   }
 
   /**
-   * Enable automatic tracking
+   * 启用自动跟踪
    */
   public enableAutoTrack(): void {
     this.config.autoTrackPV = true;
@@ -103,7 +103,7 @@ class UniTracker {
   }
 
   /**
-   * Disable automatic tracking
+   * 禁用自动跟踪
    */
   public disableAutoTrack(): void {
     this.config.autoTrackPV = false;
@@ -111,14 +111,14 @@ class UniTracker {
   }
 
   /**
-   * Set custom dimension
+   * 设置自定义维度
    */
   public setCustomDimension(key: string, value: any): void {
     (this.config as any)[key] = value;
   }
 
   /**
-   * Add data to the queue
+   * 将数据添加到队列
    */
   private addToQueue(data: TrackingData): void {
     this.queue.push(data);
@@ -129,7 +129,7 @@ class UniTracker {
   }
 
   /**
-   * Send data to the server
+   * 将数据发送到服务器
    */
   private flush(): void {
     if (this.queue.length === 0) return;
@@ -151,7 +151,7 @@ class UniTracker {
   }
 
   /**
-   * Start the timer for periodic data sending
+   * 启动定时器用于周期性发送数据
    */
   private startTimer(): void {
     if (this.timer) {
@@ -164,7 +164,7 @@ class UniTracker {
   }
 
   /**
-   * Track performance metrics
+   * 跟踪性能指标
    */
   private trackPerformance(): void {
     if (!window.performance) return;
@@ -197,7 +197,7 @@ class UniTracker {
   }
 
   /**
-   * Track JavaScript errors
+   * 跟踪JavaScript错误
    */
   private trackErrors(): void {
     window.addEventListener('error', (event) => {
@@ -247,7 +247,7 @@ class UniTracker {
   }
 
   /**
-   * Track API requests using XMLHttpRequest and fetch
+   * 使用XMLHttpRequest和fetch跟踪API请求
    */
   private trackApiRequests(): void {
     const originalXhrOpen = XMLHttpRequest.prototype.open;
@@ -371,7 +371,7 @@ class UniTracker {
   }
 
   /**
-   * Set up all event listeners
+   * 设置所有事件监听器
    */
   private setupListeners(): void {
     this.trackPerformance();
@@ -400,7 +400,7 @@ class UniTracker {
   }
 
   /**
-   * Remove event listeners
+   * 移除事件监听器
    */
   private removeListeners(): void {
   }

@@ -89,15 +89,15 @@
   </div>
   
   <script>
-    // Wait for the SDK to load
+    // 等待SDK加载
     window.addEventListener('load', function() {
-      // Check if UniTracker is available
+      // 检查UniTracker是否可用
       if (typeof UniTracker === 'undefined') {
         alert('UniTracker SDK not loaded. Make sure to build the SDK first.');
         return;
       }
       
-      // Initialize button
+      // 初始化按钮
       document.getElementById('init-btn').addEventListener('click', function() {
         const config = {
           id: 'test-app',
@@ -110,7 +110,7 @@
         console.log('Tracker initialized with config:', config);
       });
       
-      // Track custom event button
+      // 跟踪自定义事件按钮
       document.getElementById('track-btn').addEventListener('click', function() {
         const eventData = {
           buttonId: 'track-btn',
@@ -122,7 +122,7 @@
         console.log('Custom event tracked:', eventData);
       });
       
-      // Set user info button
+      // 设置用户信息按钮
       document.getElementById('set-user-btn').addEventListener('click', function() {
         const userInfo = {
           userId: 'user-' + Math.floor(Math.random() * 1000),
@@ -134,16 +134,16 @@
         console.log('User info set:', userInfo);
       });
       
-      // Track page view button
+      // 跟踪页面浏览按钮
       document.getElementById('page-view-btn').addEventListener('click', function() {
         UniTracker.trackPageView();
         console.log('Page view tracked');
       });
       
-      // Generate error button
+      // 生成错误按钮
       document.getElementById('error-btn').addEventListener('click', function() {
         try {
-          // Generate a deliberate error
+          // 生成一个故意的错误
           const obj = null;
           obj.nonExistentMethod();
         } catch (error) {
@@ -152,7 +152,7 @@
         }
       });
       
-      // API success request button
+      // API成功请求按钮
       document.getElementById('api-success-btn').addEventListener('click', function() {
         fetch('https://jsonplaceholder.typicode.com/todos/1')
           .then(response => response.json())
@@ -160,7 +160,7 @@
           .catch(error => console.error('API error:', error));
       });
       
-      // API error request button
+      // API错误请求按钮
       document.getElementById('api-error-btn').addEventListener('click', function() {
         fetch('https://jsonplaceholder.typicode.com/nonexistent')
           .then(response => {
@@ -173,7 +173,7 @@
           .catch(error => console.error('API error:', error));
       });
       
-      // Session management buttons
+      // 会话管理按钮
       document.getElementById('start-session-btn').addEventListener('click', function() {
         UniTracker.startSession();
         console.log('Session started');
