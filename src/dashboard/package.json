@@ -1,0 +1,25 @@
+{
+  "name": "uni-tracker-dashboard",
+  "version": "0.1.0",
+  "description": "Dashboard for uni-tracker, a front-end tracking solution supporting private deployment",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "chart.js": "^3.8.0",
+    "react": "^18.1.0",
+    "react-chartjs-2": "^4.1.0",
+    "react-dom": "^18.1.0",
+    "react-router-dom": "^6.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.12",
+    "@types/react-dom": "^18.0.5",
+    "@vitejs/plugin-react": "^1.3.2",
+    "typescript": "^4.7.3",
+    "vite": "^2.9.10"
+  }
+}

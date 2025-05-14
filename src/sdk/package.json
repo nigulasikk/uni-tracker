@@ -1,0 +1,31 @@
+{
+  "name": "uni-tracker-sdk",
+  "version": "0.1.0",
+  "description": "SDK for uni-tracker, a front-end tracking solution supporting private deployment",
+  "main": "dist/uni-tracker.js",
+  "module": "dist/uni-tracker.esm.js",
+  "unpkg": "dist/uni-tracker.min.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tracking",
+    "monitoring",
+    "analytics",
+    "private-deployment"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.2",
+    "rollup": "^2.75.5",
+    "rollup-plugin-terser": "^7.0.2",
+    "typescript": "^4.7.3",
+    "tslib": "^2.4.0"
+  }
+}
