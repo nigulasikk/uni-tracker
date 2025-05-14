@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uni-Tracker Test</title>
+  <script src="/src/sdk/dist/uni-tracker.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .error-btn {
+      background-color: #f44336;
+    }
+    .api-btn {
+      background-color: #2196F3;
+    }
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 4px;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Uni-Tracker Test Page</h1>
+  
+  <div class="card">
+    <h2>Initialization</h2>
+    <pre id="init-config"></pre>
+    <button id="init-btn">Initialize Tracker</button>
+  </div>
+  
+  <div class="card">
+    <h2>Custom Events</h2>
+    <button id="track-btn">Track Custom Event</button>
+    <pre id="event-data"></pre>
+  </div>
+  
+  <div class="card">
+    <h2>User Information</h2>
+    <button id="set-user-btn">Set User Info</button>
+    <pre id="user-data"></pre>
+  </div>
+  
+  <div class="card">
+    <h2>Page Views</h2>
+    <button id="page-view-btn">Track Page View</button>
+  </div>
+  
+  <div class="card">
+    <h2>Error Tracking</h2>
+    <button id="error-btn" class="error-btn">Generate Error</button>
+  </div>
+  
+  <div class="card">
+    <h2>API Request Tracking</h2>
+    <button id="api-success-btn" class="api-btn">Make Successful API Request</button>
+    <button id="api-error-btn" class="api-btn">Make Failed API Request</button>
+  </div>
+  
+  <div class="card">
+    <h2>Session Management</h2>
+    <button id="start-session-btn">Start Session</button>
+    <button id="end-session-btn">End Session</button>
+  </div>
+  
+  <script>
+    // Wait for the SDK to load
+    window.addEventListener('load', function() {
+      // Check if UniTracker is available
+      if (typeof UniTracker === 'undefined') {
+        alert('UniTracker SDK not loaded. Make sure to build the SDK first.');
+        return;
+      }
+      
+      // Initialize button
+      document.getElementById('init-btn').addEventListener('click', function() {
+        const config = {
+          id: 'test-app',
+          environment: 'development',
+          serverUrl: 'http://localhost:3000/api/collect'
+        };
+        
+        UniTracker.init(config);
+        document.getElementById('init-config').textContent = JSON.stringify(config, null, 2);
+        console.log('Tracker initialized with config:', config);
+      });
+      
+      // Track custom event button
+      document.getElementById('track-btn').addEventListener('click', function() {
+        const eventData = {
+          buttonId: 'track-btn',
+          timestamp: new Date().toISOString()
+        };
+        
+        UniTracker.track('button_click', eventData);
+        document.getElementById('event-data').textContent = JSON.stringify(eventData, null, 2);
+        console.log('Custom event tracked:', eventData);
+      });
+      
+      // Set user info button
+      document.getElementById('set-user-btn').addEventListener('click', function() {
+        const userInfo = {
+          userId: 'user-' + Math.floor(Math.random() * 1000),
+          username: 'Test User'
+        };
+        
+        UniTracker.setUser(userInfo);
+        document.getElementById('user-data').textContent = JSON.stringify(userInfo, null, 2);
+        console.log('User info set:', userInfo);
+      });
+      
+      // Track page view button
+      document.getElementById('page-view-btn').addEventListener('click', function() {
+        UniTracker.trackPageView();
+        console.log('Page view tracked');
+      });
+      
+      // Generate error button
+      document.getElementById('error-btn').addEventListener('click', function() {
+        try {
+          // Generate a deliberate error
+          const obj = null;
+          obj.nonExistentMethod();
+        } catch (error) {
+          console.error('Error generated for testing:', error);
+          throw error;
+        }
+      });
+      
+      // API success request button
+      document.getElementById('api-success-btn').addEventListener('click', function() {
+        fetch('https://jsonplaceholder.typicode.com/todos/1')
+          .then(response => response.json())
+          .then(data => console.log('API success response:', data))
+          .catch(error => console.error('API error:', error));
+      });
+      
+      // API error request button
+      document.getElementById('api-error-btn').addEventListener('click', function() {
+        fetch('https://jsonplaceholder.typicode.com/nonexistent')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('API request failed');
+            }
+            return response.json();
+          })
+          .then(data => console.log('API response:', data))
+          .catch(error => console.error('API error:', error));
+      });
+      
+      // Session management buttons
+      document.getElementById('start-session-btn').addEventListener('click', function() {
+        UniTracker.startSession();
+        console.log('Session started');
+      });
+      
+      document.getElementById('end-session-btn').addEventListener('click', function() {
+        UniTracker.endSession();
+        console.log('Session ended');
+      });
+    });
+  </script>
+</body>
+</html>

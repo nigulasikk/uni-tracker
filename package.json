@@ -1,0 +1,23 @@
+{
+  "name": "uni-tracker",
+  "version": "0.1.0",
+  "description": "A front-end tracking solution supporting private deployment",
+  "main": "index.js",
+  "scripts": {
+    "build:sdk": "cd src/sdk && npm run build",
+    "build:server": "cd src/server && npm run build",
+    "build:dashboard": "cd src/dashboard && npm run build",
+    "build": "npm run build:sdk && npm run build:server && npm run build:dashboard",
+    "start:server": "cd src/server && npm start",
+    "start:dashboard": "cd src/dashboard && npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tracking",
+    "monitoring",
+    "analytics",
+    "private-deployment"
+  ],
+  "author": "",
+  "license": "MIT"
+}
