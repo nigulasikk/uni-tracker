@@ -1,5 +1,172 @@
-# uni-tracker
+# Uni-Tracker
 
+A front-end tracking solution supporting private deployment.
+
+## Introduction
+
+Uni-Tracker is a lightweight, privacy-focused front-end tracking solution designed for private deployment. It allows you to track user interactions, monitor performance, and diagnose issues in your web applications, even in network-isolated environments.
+
+## Features
+
+- **Private Deployment Support**: Deploy alongside your business system in isolated network environments
+- **Offline Data Synchronization**: Export and import tracking data for offline analysis
+- **Multiple Integration Methods**: Support for both CDN and NPM package integration
+- **Comprehensive Monitoring**:
+  - PV/UV statistics
+  - Page performance metrics
+  - JavaScript error diagnostics
+  - API request monitoring
+  - User behavior tracking
+  - Custom event tracking
+- **Real-time Dashboard**: Monitor your application's health and usage in real-time
+
+## Quick Start
+
+### CDN Integration
+
+```html
+<!-- Include the Uni-Tracker script -->
+<script src="https://cdn.example.com/uni-tracker.min.js"></script>
+<script>
+  // Initialize Uni-Tracker
+  UniTracker.init({
+    id: 'your-app-id',
+    environment: 'production'
+  });
+</script>
+```
+
+### NPM Integration
+
+```bash
+# Install the package
+npm install uni-tracker
+# or
+yarn add uni-tracker
+# or
+pnpm add uni-tracker
+```
+
+```javascript
+// Import and initialize
+import UniTracker from 'uni-tracker';
+
+UniTracker.init({
+  id: 'your-app-id',
+  environment: 'production'
+});
+```
+
+## Configuration Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| id | string | - | Required. Your application's unique identifier |
+| userId | string | - | Optional. Current user's ID |
+| username | string | - | Optional. Current user's name |
+| environment | string | - | Optional. Environment (e.g., 'production', 'development') |
+| version | string | - | Optional. Your application's version |
+| autoTrackPV | boolean | true | Whether to automatically track page views |
+| enableSPA | boolean | false | Enable tracking for single-page applications |
+| maxBatchSize | number | 10 | Maximum number of events to batch before sending |
+| sendInterval | number | 5000 | Interval (ms) to send batched events |
+| serverUrl | string | 'http://localhost:3000/api/collect' | URL to send tracking data |
+
+## API Reference
+
+### Core Methods
+
+```javascript
+// Initialize the tracker
+UniTracker.init({
+  id: 'your-app-id',
+  // other options...
+});
+
+// Track custom events
+UniTracker.track('button_click', {
+  buttonId: 'submit-button',
+  page: 'checkout'
+});
+
+// Track page views manually (if autoTrackPV is false)
+UniTracker.trackPageView();
+
+// Set user information
+UniTracker.setUser({
+  userId: 'user-123',
+  username: 'John Doe'
+});
+
+// Start a new session
+UniTracker.startSession();
+
+// End the current session
+UniTracker.endSession();
+```
+
+## Server Setup
+
+The server component receives and stores tracking data from the SDK.
+
+```bash
+# Navigate to the server directory
+cd src/server
+
+# Install dependencies
+npm install
+
+# Start the server
+npm start
+```
+
+## Dashboard Setup
+
+The dashboard provides a visual interface for monitoring your application.
+
+```bash
+# Navigate to the dashboard directory
+cd src/dashboard
+
+# Install dependencies
+npm install
+
+# Start the dashboard
+npm start
+```
+
+## Private Deployment
+
+For private deployment in isolated network environments:
+
+1. Build the SDK, server, and dashboard components
+2. Deploy the server and dashboard to your private environment
+3. Configure the SDK to point to your private server
+4. Include the SDK in your application
+
+## Offline Data Synchronization
+
+For environments without network connectivity:
+
+1. Export data from the dashboard using the "Export Data" button
+2. Transfer the exported file to a connected environment
+3. Import the data using the "Import Data" button in the connected dashboard
+
+## Project Structure
+
+```
+uni-tracker/
+├── src/
+│   ├── sdk/           # Front-end tracking SDK
+│   ├── server/        # Backend for receiving and storing data
+│   └── dashboard/     # Visualization dashboard
+├── examples/          # Integration examples
+└── README.md          # Documentation
+```
+
+## License
+
+MIT
 ## 简介 (Introduction)
 uni-tracker 是一个支持私有化部署的前端埋点方案，专为需要在无网络环境下追踪用户行为的业务系统设计。它允许埋点系统随业务系统一起部署到网络隔离的局点环境中，并通过离线手段回流用户体验数据。
 

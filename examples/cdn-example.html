@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uni-Tracker CDN Example</title>
+  <!-- Include the Uni-Tracker script from CDN -->
+  <script src="https://cdn.example.com/uni-tracker.min.js"></script>
+  <script>
+    // Initialize Uni-Tracker
+    UniTracker.init({
+      id: 'my-app-id',
+      environment: 'production',
+      userId: 'user-123',
+      username: 'John Doe'
+    });
+
+    // Track a custom event
+    function trackButtonClick() {
+      UniTracker.track('button_click', {
+        buttonId: 'submit-button',
+        page: 'homepage'
+      });
+      alert('Event tracked!');
+    }
+  </script>
+</head>
+<body>
+  <h1>Uni-Tracker CDN Integration Example</h1>
+  <p>This example demonstrates how to integrate Uni-Tracker using a CDN script.</p>
+  
+  <button onclick="trackButtonClick()">Track Button Click</button>
+  
+  <div>
+    <h2>Integration Steps:</h2>
+    <ol>
+      <li>Include the Uni-Tracker script from CDN</li>
+      <li>Initialize the tracker with your app ID and other configuration</li>
+      <li>Track events using the UniTracker.track() method</li>
+    </ol>
+  </div>
+  
+  <div>
+    <h2>Available Methods:</h2>
+    <ul>
+      <li><code>UniTracker.init(config)</code> - Initialize the tracker</li>
+      <li><code>UniTracker.track(eventName, params)</code> - Track custom events</li>
+      <li><code>UniTracker.trackPageView()</code> - Track page views (automatic if autoTrackPV is true)</li>
+      <li><code>UniTracker.setUser(userInfo)</code> - Set user information</li>
+      <li><code>UniTracker.startSession()</code> - Start a new session</li>
+      <li><code>UniTracker.endSession()</code> - End the current session</li>
+    </ul>
+  </div>
+</body>
+</html>
